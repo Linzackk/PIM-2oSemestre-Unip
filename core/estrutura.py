@@ -1,0 +1,1 @@
+# Funções relacionadas a estilização na saída no Console
