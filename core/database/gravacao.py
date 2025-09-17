@@ -11,62 +11,56 @@ def adicionar_conta_login(id: str, senha: str):
     conexao.commit()
     print("Login adicionado com sucesso.")
 
-def adicionar_aluno(nome: str, idade: int, data_nascimento: str, genero: str, cpf: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str="123"):
-    id = verificacao.criar_id("aluno")
-    cursor.execute("""
-                INSERT INTO alunos VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, data_nascimento, cpf, campus, curso, turma, horario_aula)
-                )
-                
-    adicionar_conta_login(id, senha)
+def adicionar_conta(tabela: str, colunas: list, valores: tuple):
+    placeholder = ", ".join("?") * len(valores)
+    colunas_str = ", ".join(colunas)
+    sql = f"INSERT INTO {tabela} ({colunas_str}) VALUES ({placeholder})"
+    cursor.execute(sql, valores)
     conexao.commit()
+
+
+def adicionar_aluno(nome, idade, data_nascimento, genero, cpf, campus, curso, turma, horario_aula, senha="123"):
+    id = verificacao.criar_id("aluno")
+    adicionar_conta("alunos",
+                  ["id_aluno", "nome", "idade", "genero", "data_nascimento", "cpf", "campus", "curso", "turma", "horario_aula"],
+                  (id, nome, idade, genero, data_nascimento, cpf, campus, curso, turma, horario_aula))
+    adicionar_conta_login(id, senha)
     print(f"Aluno {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_professor(nome :str, idade :int, genero :str, data_nascimento: str, cpf: str, materia_ensino: str, senha :str="123"):
+def adicionar_professor(nome: str, idade: int, genero: str, data_nascimento: str, cpf: str, materia_ensino: str, senha: str="123"):
     id = verificacao.criar_id("professor")
-    cursor.execute("""
-                INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, data_nascimento, cpf, materia_ensino)
-                )
-                
+    adicionar_conta(
+        "professores",
+        ["id_professor", "nome", "idade", "genero", "data_nascimento", "cpf", "materia_ensino"],
+        (id, nome, idade, genero, data_nascimento, cpf, materia_ensino)
+    )
     adicionar_conta_login(id, senha)
-    conexao.commit()
     print(f"Professor {nome} adicionado com sucesso com ID {id}")
     
 def adicionar_coordenacao(nome: str, idade: int, genero: str, campus: str, data_nascimento: str, cpf: str, cargo: str, senha: str="123"):
     id = verificacao.criar_id("coordenador")
-    cursor.execute("""
-                INSERT INTO coordenacao VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, campus, data_nascimento, cpf, cargo)
-                )
-                
+    adicionar_conta(
+        "coordenacao",
+        ["id", "nome", "idade", "genero", "campus", "data_nascimento", "cpf", "cargo"],
+        (id, nome, idade, genero, campus, data_nascimento, cpf, cargo)
+    )
     adicionar_conta_login(id, senha)
-    conexao.commit()
     print(f"Coordenador {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_campus(nome: str, endereco: str, diretor: str, diretor_id: str, telefone: str):
-    cursor.execute("""
-                INSERT INTO campus (nome, endereco, diretor, diretor_id, telefone) VALUES ( ?, ?, ?, ?, ? )
-                """, ( nome, endereco, diretor, diretor_id, telefone)
-                )
-                
-    conexao.commit()
+def adicionar_campus(nome, endereco, diretor, diretor_id, telefone):
+    adicionar_conta("campus",
+                  ["nome", "endereco", "diretor", "diretor_id", "telefone"],
+                  (nome, endereco, diretor, diretor_id, telefone))
     print(f"Campus {nome} adicionado com sucesso")
-    
-def adicionar_curso(curso: str, duracao_anos: int, formacao: str):
-    cursor.execute("""
-                INSERT INTO cursos (curso, duracao_anos, formacao) VALUES ( ?, ?, ?)
-                """, (curso, duracao_anos, formacao)
-                )
-                
-    conexao.commit()
-    print(f"Curso {curso} adicionado com sucesso.")
-    
-def adicionar_materia(materia: str, professor: str, professor_id: str, carga_horaria: int):
-    cursor.execute("""
-                INSERT INTO materias (materia, professor, professor_id, carga_horaria) VALUES ( ?, ?, ?, ?)
-                """, (materia, professor, professor_id, carga_horaria)
-                )
-                
-    conexao.commit()
-    print(f"Materia {materia} adicionado com sucesso.")
+
+def adicionar_curso(curso, duracao_anos, formacao):
+    adicionar_conta("cursos",
+                  ["curso", "duracao_anos", "formacao"],
+                  (curso, duracao_anos, formacao))
+    print(f"Curso {curso} adicionado com sucesso")
+
+def adicionar_materia(materia, professor, professor_id, carga_horaria):
+    adicionar_conta("materias",
+                  ["materia", "professor", "professor_id", "carga_horaria"],
+                  (materia, professor, professor_id, carga_horaria))
+    print(f"Matéria {materia} adicionada com sucesso")
