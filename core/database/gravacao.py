@@ -2,7 +2,7 @@ import sqlite3 as sql
 
 from core import verificacao
 
-conexao = sql.connect("banco_de_dados.db")
+conexao = sql.connect("banco-dados/banco_de_dados.db")
 
 cursor = conexao.cursor()
 

@@ -6,4 +6,6 @@ import core.database.leitura as read_info
 import core.database.gravacao as create_info
 
 
+print(read_info.mostrar_informacao("alunos", "RGNJ0GA"))
+
 # ids = ["RGNJ0GA", "HVNFVOP", "L63Y6NC", "MZN2EHA"]

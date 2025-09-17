@@ -1,0 +1,8 @@
+{
+    "alunos": "id_aluno",
+    "professores": "id_professor",
+    "coordenacao": "id_admin",
+    "campus": "id_campus",
+    "cursos": "curso_id",
+    "materias": "materia_id"
+}
