@@ -2,6 +2,8 @@
 # TODO: Classes: Conta, Aluno, Professor, Coordenação
 # TODO: Banco de Dados, Tabelas: Login, Alunos, Professores, Coordenação, Campus, Cursos, Matérias e Notas
 
-import core.database.bancoDeDados as db
+import core.database.leitura as read_info
+import core.database.gravacao as create_info
 
-# ids = ["RGNJ0GA", "HVNFVOP", "L63Y6NC"]
+
+# ids = ["RGNJ0GA", "HVNFVOP", "L63Y6NC", "MZN2EHA"]
