@@ -3,3 +3,5 @@ include
 lib
 scripts
 pyvenv.cfg
+criacaoTabelas.py
+teste.py
