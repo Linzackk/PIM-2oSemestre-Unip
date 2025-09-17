@@ -4,5 +4,6 @@
     "coordenacao": "id_admin",
     "campus": "id_campus",
     "cursos": "curso_id",
-    "materias": "materia_id"
+    "materias": "materia_id",
+    "login": "id"
 }

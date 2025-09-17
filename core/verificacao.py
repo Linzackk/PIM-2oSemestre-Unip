@@ -3,7 +3,7 @@
 import string
 import secrets
 
-from .database import bancoDeDados as infosdb
+from .database import leitura as read_info
 
 def gerar_id(cargo: str) -> str:
     caracteres = string.ascii_uppercase + string.digits
@@ -18,7 +18,7 @@ def criar_id(cargo: str):
     return id
 
 def existencia_conta(id: str):
-    info = infosdb.mostrar_login(id)
+    info = read_info.mostrar_informacao("login", id)
     if not info:
         return False
     else:

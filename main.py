@@ -7,8 +7,7 @@ import core.database.gravacao as create_info
 
 
 print(read_info.mostrar_informacao("alunos", "RGNJ0GA"))
-# nome: str, idade: int, data_nascimento: str, genero: str, cpf: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str="123"
-create_info.adicionar_aluno("Isaac", 35, "1990-06-15", "Masculino", "123.456.789-00", "Chácara Santo Antônio", "DS1A40", "Noturno")
-create_info.adicionar_conta()
+# nome, idade, data_nascimento, genero, cpf, campus, curso, turma, horario_aula, senha="123"
+create_info.adicionar_aluno("Isaac", 35, "1990-06-15", "Masculino", "123.456.789-00", "Chácara Santo Antônio", "ADS", "DS1A40", "Noturno")
 
 # ids = ["RGNJ0GA", "HVNFVOP", "L63Y6NC", "MZN2EHA"]
