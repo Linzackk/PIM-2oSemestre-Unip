@@ -2,6 +2,7 @@
 # TODO: Verificação de Usuarios, Senha, Valores de escolhas.
 import string
 import secrets
+from core import utils
 
 from .database import leitura as read_info
 
@@ -24,3 +25,16 @@ def existencia_conta(id: str):
     else:
         return True
     
+def identificarFuncao(id: str) -> str:
+    siglas = utils.importarSiglaFuncao()
+    try:
+        return siglas[id[-1]]
+    except KeyError:
+        return False
+        
+def identificarId(tabela: str) -> str:
+    siglas = utils.importarSiglasIds()
+    try:
+        return siglas[tabela]
+    except KeyError:
+        return False
