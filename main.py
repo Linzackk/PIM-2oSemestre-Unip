@@ -2,12 +2,15 @@
 # TODO: Classes: Conta, Aluno, Professor, Coordenação
 # TODO: Banco de Dados, Tabelas: Login, Alunos, Professores, Coordenação, Campus, Cursos, Matérias e Notas
 
-import core.database.leitura as read_info
-import core.database.gravacao as create_info
+import core.database.leitura as read
+import core.database.gravacao as create
+#from models.aluno import Aluno
+from models.conta import Conta
+#from models.professor import Professor
+#from models.coordenacao import Coordenacao
 
+#create.adicionar_aluno("Alice Martins", 21, "2002-05-14", "F", "12345678901", "Campus A", "Sistemas", "B", "10:00-12:00", "abc123")
 
-print(read_info.mostrar_informacao("alunos", "RGNJ0GA"))
-# nome, idade, data_nascimento, genero, cpf, campus, curso, turma, horario_aula, senha="123"
-create_info.adicionar_aluno("Isaac", 35, "1990-06-15", "Masculino", "123.456.789-00", "Chácara Santo Antônio", "ADS", "DS1A40", "Noturno")
-
-# ids = ["RGNJ0GA", "HVNFVOP", "L63Y6NC", "MZN2EHA"]
+# ID teste = SYJUFUA
+conta = Conta("H6GU8EA")
+conta.verificarInfos()
