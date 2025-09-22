@@ -12,8 +12,8 @@ class Coordenador(Conta):
         self.cargo = None
     
     @classmethod
-    def createFromDb(id):
-        coordenador = Coordenador(id)
+    def createFromDb(cls,id):
+        coordenador = cls(id)
         info = coordenador.verificarInfos()
         for c, v in enumerate(coordenador.__dict__.items()):
             setattr(coordenador, v[0], info[0][c])

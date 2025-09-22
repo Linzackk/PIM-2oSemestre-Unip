@@ -11,8 +11,8 @@ class Professor(Conta):
         self.materia_ensino = None
         
     @classmethod
-    def createFromDb(id):
-        professor = Professor(id)
+    def createFromDb(cls,id):
+        professor = cls(id)
         info = professor.verificarInfos()
         for c, v in enumerate(professor.__dict__.items()):
             setattr(professor, v[0], info[0][c])

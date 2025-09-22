@@ -14,8 +14,8 @@ class Aluno(Conta):
         self.horario_aula = None
                
     @classmethod
-    def createFromDb(id):
-        aluno = Aluno(id)
+    def createFromDb(cls,id):
+        aluno = cls(id)
         info = aluno.verificarInfos()
         for c, v in enumerate(aluno.__dict__.items()):
             setattr(aluno, v[0], info[0][c])
