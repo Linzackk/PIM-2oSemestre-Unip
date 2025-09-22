@@ -5,13 +5,13 @@ from models.coordenacao import Coordenador
 from core import utils
 
 def criarAluno(id: str) -> Aluno:
-    return Aluno(id)
+    return Aluno.createFromDb(id)
 
 def criarProfessor(id: str) -> Professor:
-    return Professor(id)
+    return Professor.createFromDb(id)
 
 def criarCoordenador(id: str) -> Coordenador:
-    return Coordenador(id)
+    return Coordenador.createFromDb(id)
 
 def criarUsuario(id: str):
     funcoes = utils.importarSiglaFuncao()

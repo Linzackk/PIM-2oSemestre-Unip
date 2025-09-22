@@ -10,9 +10,14 @@ class Coordenador(Conta):
         super().__init__(id)
         self.campus = None
         self.cargo = None
-        info = self.verificarInfos()
-        for c, v in enumerate(self.__dict__.items()):
-            setattr(self, v[0], info[0][c])       
+    
+    @classmethod
+    def createFromDb(id):
+        coordenador = Coordenador(id)
+        info = coordenador.verificarInfos()
+        for c, v in enumerate(coordenador.__dict__.items()):
+            setattr(coordenador, v[0], info[0][c])
+        return coordenador      
         
     def atualizar_info(informacao, novaInformacao):
         # Função para atualizar alguma informacao

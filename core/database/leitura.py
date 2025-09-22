@@ -13,7 +13,6 @@ def mostrar_informacao_filtro(tabela, chave_principal, id):
 
 def mostrar_informacao(tabela, id):
     id_tabela = verificacao.identificarId(tabela)
-    print(id_tabela)
     if not id_tabela:
         return False
     return mostrar_informacao_filtro(tabela, id_tabela, id)

@@ -25,6 +25,7 @@ print("-"*30)
 for id_login in lista:
     cargo, id = id_login.split(" - ")
     usuario = criacaoClasses.criarUsuario(id)
+    
     print(f"{cargo.upper()}")
     usuario.mostrar_info()
     print("-"*30)

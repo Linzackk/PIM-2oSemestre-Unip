@@ -9,9 +9,14 @@ class Professor(Conta):
     def __init__(self, id):
         super().__init__(id)
         self.materia_ensino = None
-        info = self.verificarInfos()
-        for c, v in enumerate(self.__dict__.items()):
-            setattr(self, v[0], info[0][c])       
+        
+    @classmethod
+    def createFromDb(id):
+        professor = Professor(id)
+        info = professor.verificarInfos()
+        for c, v in enumerate(professor.__dict__.items()):
+            setattr(professor, v[0], info[0][c])
+        return professor    
         
     def atualizar_info(informacao, novaInformacao):
         # Função para atualizar alguma informacao
