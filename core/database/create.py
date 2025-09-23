@@ -11,7 +11,7 @@ def adicionar_conta_login(id: str, senha: str):
     conexao.commit()
     print("Login adicionado com sucesso.")
 
-def adicionar_aluno(nome: str, idade: int, data_nascimento: str, genero: str, cpf: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str="123"):
+def adicionar_aluno(nome: str, idade: int, genero: str, data_nascimento: str, cpf: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str="123"):
     id = verificacao.criar_id("aluno")
     cursor.execute("""
                 INSERT INTO alunos VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

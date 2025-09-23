@@ -1,6 +1,6 @@
 # Classe Coordenacao
-from core.database import leitura
-from core.database import gravacao
+from core.database import read
+from core.database import create
 from core import utils
 
 from models.conta import Conta
@@ -18,7 +18,3 @@ class Coordenador(Conta):
         for c, v in enumerate(coordenador.__dict__.items()):
             setattr(coordenador, v[0], info[0][c])
         return coordenador      
-        
-    def atualizar_info(informacao, novaInformacao):
-        # Função para atualizar alguma informacao
-        print("Hello, World!")

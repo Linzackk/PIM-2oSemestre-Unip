@@ -4,7 +4,7 @@ import string
 import secrets
 from core import utils
 
-from .database import leitura as read_info
+from .database import read
 
 def gerar_id(cargo: str) -> str:
     caracteres = string.ascii_uppercase + string.digits
@@ -19,7 +19,7 @@ def criar_id(cargo: str):
     return id
 
 def existencia_conta(id: str):
-    info = read_info.mostrar_informacao("login", id)
+    info = read.mostrar_informacao("login", id)
     if not info:
         return False
     else:
@@ -38,3 +38,19 @@ def identificarId(tabela: str) -> str:
         return siglas[tabela]
     except KeyError:
         return False
+    
+def verificarCerteza(informacao: str):
+    correto = input(f"A Informação {informacao} está correta? [S/N] ").upper()
+    if correto == "S":
+        return True
+    else:
+        return False
+
+def continuarEscolha():
+    sair = input("Deseja Sair? [S/N] ").upper()
+    if sair == "S":
+        return True
+    else:
+        return False
+
+# Criar função para validar entrada de numeros (nos menus)
