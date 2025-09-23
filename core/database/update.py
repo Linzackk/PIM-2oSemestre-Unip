@@ -11,7 +11,7 @@ conexao = sql.connect("banco-dados/banco_de_dados.db")
 cursor = conexao.cursor()
 
 def atualizar_informacoes(id_conta: str, informacao: str, nova_informacao: str):
-    # Acessar a tabela, selecionar a informacao e dar update para nova informacao
+    # Acessa a Tabela da conta, filtra pelo ID e altera a informação.
     tabela = verificacao.identificarFuncao(id_conta)
     id = verificacao.identificarId(tabela)
     cursor.execute(f"UPDATE {tabela} SET {informacao} = ? WHERE {id} = ?", (nova_informacao, id_conta))
