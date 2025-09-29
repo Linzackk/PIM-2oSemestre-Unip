@@ -1,6 +1,7 @@
 import sqlite3 as sql
 
 from core import verificacao
+from core.database import read
 
 conexao = sql.connect("banco-dados/banco_de_dados.db")
 
@@ -11,33 +12,33 @@ def adicionar_conta_login(id: str, senha: str):
     conexao.commit()
     print("Login adicionado com sucesso.")
 
-def adicionar_aluno(nome: str, idade: int, genero: str, data_nascimento: str, cpf: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str="123"):
+def adicionar_aluno(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, campus: str, curso: str, turma: str, horario_aula: str, senha: str = "123"):
     id = verificacao.criar_id("aluno")
     cursor.execute("""
-                INSERT INTO alunos VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, data_nascimento, cpf, campus, curso, turma, horario_aula)
+                INSERT INTO alunos VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (id, nome, idade, genero, telefone, cpf, data_nascimento, campus, curso, turma, horario_aula)
                 )
                 
     adicionar_conta_login(id, senha)
     conexao.commit()
     print(f"Aluno {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_professor(nome :str, idade :int, genero :str, data_nascimento: str, cpf: str, materia_ensino: str, senha :str="123"):
+def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, senha: str = "123"):
     id = verificacao.criar_id("professor")
     cursor.execute("""
-                INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, data_nascimento, cpf, materia_ensino)
+                INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino)
                 )
                 
     adicionar_conta_login(id, senha)
     conexao.commit()
     print(f"Professor {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_coordenacao(nome: str, idade: int, genero: str, campus: str, data_nascimento: str, cpf: str, cargo: str, senha: str="123"):
+def adicionar_coordenacao(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, campus: str, cargo: str, senha: str = "123"):
     id = verificacao.criar_id("coordenador")
     cursor.execute("""
-                INSERT INTO coordenacao VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, campus, data_nascimento, cpf, cargo)
+                INSERT INTO coordenacao VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (id, nome, idade, genero, telefone, data_nascimento, cpf, campus, cargo)
                 )
                 
     adicionar_conta_login(id, senha)
@@ -69,4 +70,12 @@ def adicionar_materia(materia: str, professor: str, professor_id: str, carga_hor
                 )
                 
     conexao.commit()
+    adicionar_materia_faltas()
     print(f"Materia {materia} adicionado com sucesso.")
+    
+def adicionar_materia_faltas():
+    materia = read.mostrar_tabela_completa("materias")[-1]
+    cursor.execute("""
+                INSERT INTO faltas (materia_id, materia) VALUES(?, ?)
+                """, (materia[0], materia[1]))
+    conexao.commit()

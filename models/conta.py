@@ -11,8 +11,9 @@ class Conta:
         self.nome = None
         self.idade = None
         self.genero = None
-        self.data_nascimento = None
+        self.telefone = None
         self.cpf = None
+        self.data_nascimento = None
         
     def verificarInfos(self):
         id = self.id
@@ -60,4 +61,3 @@ class Conta:
     def atualizar_localmente(self, informacao, nova_informacao):
         setattr(self, informacao, nova_informacao)
         
-    
