@@ -1,6 +1,7 @@
 # Funções de apoio
 import json
 from datetime import date, datetime
+from core.database import read
 
 def importarSiglasIds():
     with open("ids-tabelas/idsBanco.json", "r") as arquivo:
@@ -24,5 +25,5 @@ def gerarTimestamp(dataDB: str = None):
 def calcularIdade(nascimento):
     return int((gerarTimestamp() - gerarTimestamp(nascimento)) / 31556926)
 
-
-    
+def pegarIdMateria(materia):
+    return read.mostrar_informacao_filtrada("materias", "materia", materia, "materia_id")

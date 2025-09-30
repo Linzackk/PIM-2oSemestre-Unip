@@ -31,30 +31,36 @@ class Conta:
         return self.__dict__.items()
     
     def atualizar_informacao(self):
+        opcoes = {
+            1: "nome",
+            2: "idade",
+            3: "genero",
+            4: "telefone"
+        }
         escolha = self.escolher_informacao()
-        if escolha == 1:
-            tipo_escolha = "nome"
-        if escolha == 2:
-            tipo_escolha = "idade"
-        if escolha == 3:
-            tipo_escolha = "genero"
-        else:
-            pass
+        
+        try:
+            tipo_escolha = opcoes[escolha]
+        except KeyError:
+            return
         
         certeza = False
         while not certeza:
+            sair = verificacao.continuarEscolha()
+            if sair:
+                break
+            
             nova_escolha = input(f"A nova informação para {tipo_escolha}: ")
             certeza = verificacao.verificarCerteza(nova_escolha)
-            if not certeza:
-                sair = verificacao.continuarEscolha()
-                if sair:
-                    break
+            
             if certeza:
                 update.atualizar_informacoes(self.id, tipo_escolha, nova_escolha)
                 self.atualizar_localmente(tipo_escolha, nova_escolha)
+                return
+            
         
     def escolher_informacao(self):
-        opcoes = ["Nome", "Idade", "Genero"]
+        opcoes = ["Nome", "Idade", "Genero", "Telefone"]
         escolha = estrutura.escolher_opcao(opcoes)
         return escolha
     

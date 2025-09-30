@@ -1,12 +1,10 @@
-import sqlite3 as sql
-import re
+from core.database.sql import CURSOR as cursor
+from core.database.sql import CONEXAO as conexao
+
 from core import utils
 from core import verificacao
+
 from core.database import update
-
-conexao = sql.connect("banco-dados/banco_de_dados.db")
-
-cursor = conexao.cursor()
 
 def mostrar_informacao_filtrada(tabela, chave_principal, id, chave_alvo):
     informacao = cursor.execute(f"SELECT {chave_alvo} FROM {tabela} WHERE {chave_principal} = ?", (id, )).fetchone()

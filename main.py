@@ -19,7 +19,8 @@ while not id:
     if id_login == 0:
         break
     id = verificacao.existencia_conta(id_login)
-id_login = "RBK16IA" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+id_login = "TPWMT5P" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
 usuario.mostrar_info()
+usuario.atualizar_informacao()

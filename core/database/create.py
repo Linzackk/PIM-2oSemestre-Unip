@@ -1,11 +1,10 @@
-import sqlite3 as sql
+from core.database.sql import CURSOR as cursor
+from core.database.sql import CONEXAO as conexao
 
 from core import verificacao
+from core import utils
+
 from core.database import read
-
-conexao = sql.connect("banco-dados/banco_de_dados.db")
-
-cursor = conexao.cursor()
 
 def adicionar_conta_login(id: str, senha: str):
     cursor.execute("INSERT INTO login VALUES (?, ?)", (id, senha))
@@ -25,9 +24,10 @@ def adicionar_aluno(nome: str, idade: int, genero: str, telefone: str, cpf: str,
     
 def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, senha: str = "123"):
     id = verificacao.criar_id("professor")
+    id_materia = utils.pegarIdMateria(materia_ensino)
     cursor.execute("""
-                INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino)
+                INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino, id_materia)
                 )
                 
     adicionar_conta_login(id, senha)

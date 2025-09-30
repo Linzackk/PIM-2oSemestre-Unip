@@ -53,4 +53,19 @@ def continuarEscolha():
     else:
         return False
 
+def verificarNota(nota):
+    x = True if (nota >= 0 and nota <= 10) else False
+    return x
+
+def verificarTipoEntrada(tipo: str, entrada: str):
+    opcoes = {
+        "int": 1,
+        "float": 2
+    }
+    try:
+        x = int(entrada) if opcoes[int] == 1 else float(entrada)
+        return True
+    except ValueError:
+        return False
+    
 # Criar função para validar entrada de numeros (nos menus)
