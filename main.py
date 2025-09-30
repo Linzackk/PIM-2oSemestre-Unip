@@ -23,4 +23,4 @@ id_login = "TPWMT5P" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
 usuario.mostrar_info()
-usuario.atualizar_informacao()
+usuario.postar_nota()

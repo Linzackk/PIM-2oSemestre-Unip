@@ -20,7 +20,8 @@ def atualizar_idade(id_conta: str):
     nova_idade = utils.calcularIdade(read.mostrar_informacao_filtrada(tabela, chave_principal, id_conta, "data_nascimento"))
     atualizar_informacoes(id_conta, "idade", nova_idade)
     
-#def atualizar_nota(id_conta: str, nota: float):
+def atualizar_nota(id_conta: str, nota: float):
+    atualizar_informacoes(id_conta, )
     
     
 # ? Fazer hoje: Atualizar_Notas, Atualizar_Professores, Atualizar_Materia

@@ -62,10 +62,21 @@ def verificarTipoEntrada(tipo: str, entrada: str):
         "int": 1,
         "float": 2
     }
+    a = opcoes[tipo]
     try:
-        x = int(entrada) if opcoes[int] == 1 else float(entrada)
+        if a == 1:
+            int(entrada)
+        else:
+            float(entrada)
+        return True
+    except KeyError:
+        return False
+    
+def verificarData(data: str):
+    from datetime import datetime
+    try:
+        datetime.strptime(data, "%Y-%m-%d")
         return True
     except ValueError:
         return False
-    
 # Criar função para validar entrada de numeros (nos menus)
