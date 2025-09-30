@@ -22,9 +22,10 @@ def adicionar_aluno(nome: str, idade: int, genero: str, telefone: str, cpf: str,
     conexao.commit()
     print(f"Aluno {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, senha: str = "123"):
+def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, id_materia: str, senha: str = "123"):
     id = verificacao.criar_id("professor")
-    id_materia = utils.pegarIdMateria(materia_ensino)
+    id_materia = utils.pegarIdMateria(materia_ensino)[0]    
+    print(id_materia)
     cursor.execute("""
                 INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino, id_materia)
@@ -45,10 +46,10 @@ def adicionar_coordenacao(nome: str, idade: int, genero: str, telefone: str, cpf
     conexao.commit()
     print(f"Coordenador {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_campus(nome: str, endereco: str, diretor: str, diretor_id: str, telefone: str):
+def adicionar_campus(nome: str, endereco: str, diretor: str, telefone: str):
     cursor.execute("""
-                INSERT INTO campus (nome, endereco, diretor, diretor_id, telefone) VALUES ( ?, ?, ?, ?, ? )
-                """, ( nome, endereco, diretor, diretor_id, telefone)
+                INSERT INTO campus (nome, endereco, diretor_id, telefone) VALUES ( ?, ?, ?, ? )
+                """, ( nome, endereco, diretor, telefone)
                 )
                 
     conexao.commit()
@@ -63,10 +64,10 @@ def adicionar_curso(curso: str, duracao_anos: int, formacao: str):
     conexao.commit()
     print(f"Curso {curso} adicionado com sucesso.")
     
-def adicionar_materia(materia: str, professor: str, professor_id: str, carga_horaria: int):
+def adicionar_materia(materia: str, professor_id: str, carga_horaria: int):
     cursor.execute("""
-                INSERT INTO materias (materia, professor, professor_id, carga_horaria) VALUES ( ?, ?, ?, ?)
-                """, (materia, professor, professor_id, carga_horaria)
+                INSERT INTO materias (materia, id_professor, carga_horaria) VALUES ( ?, ?, ?)
+                """, (materia, professor_id, carga_horaria)
                 )
                 
     conexao.commit()
@@ -74,10 +75,10 @@ def adicionar_materia(materia: str, professor: str, professor_id: str, carga_hor
     print(f"Materia {materia} adicionado com sucesso.")
     
 def adicionar_materia_faltas():
-    materia = read.mostrar_tabela_completa("materias")[-1]
+    materia = read.mostrar_tabela_completa("materias")[-1][0]
     cursor.execute("""
-                INSERT INTO faltas (materia_id, materia) VALUES(?, ?)
-                """, (materia[0], materia[1]))
+                INSERT INTO faltas (materia_id) VALUES(?)
+                """, (materia, ))
     conexao.commit()
     
 def adicionar_nota(id_aluno, id_materia, nota, data_prova):

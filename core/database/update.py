@@ -23,6 +23,9 @@ def atualizar_idade(id_conta: str):
 def atualizar_nota(id_conta: str, nota: float):
     atualizar_informacoes(id_conta, )
     
+def atualizar_materia():
+    a = "a"
+    
     
 # ? Fazer hoje: Atualizar_Notas, Atualizar_Professores, Atualizar_Materia
     
