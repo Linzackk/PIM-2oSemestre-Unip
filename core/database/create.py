@@ -22,10 +22,9 @@ def adicionar_aluno(nome: str, idade: int, genero: str, telefone: str, cpf: str,
     conexao.commit()
     print(f"Aluno {nome} adicionado com sucesso com ID {id}")
     
-def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, id_materia: str, senha: str = "123"):
+def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, senha: str = "123"):
     id = verificacao.criar_id("professor")
-    id_materia = utils.pegarIdMateria(materia_ensino)[0]    
-    print(id_materia)
+    id_materia = utils.pegarIdMateria(materia_ensino)[0]
     cursor.execute("""
                 INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino, id_materia)

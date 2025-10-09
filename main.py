@@ -19,8 +19,11 @@ while not id:
     if id_login == 0:
         break
     id = verificacao.existencia_conta(id_login)
-id_login = "930XIGP" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+id_login = "2BCTQ1P" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
-    usuario.postar_nota()
+    usuario.mostrar_info()
+    
+# Testar se o menu é melhor criar aqui no main com diversos if elses ou nas respectivas classes
 #usuario.mostrar_info()
+
