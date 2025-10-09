@@ -39,7 +39,7 @@ def adicionar_coordenacao(nome: str, idade: int, genero: str, telefone: str, cpf
     id = verificacao.criar_id("coordenador")
     cursor.execute("""
                 INSERT INTO coordenacao VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (id, nome, idade, genero, telefone, data_nascimento, cpf, campus, cargo)
+                """, (id, nome, idade, genero, telefone, cpf, data_nascimento, campus, cargo)
                 )
                 
     adicionar_conta_login(id, senha)

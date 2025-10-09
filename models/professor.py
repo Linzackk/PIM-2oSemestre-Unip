@@ -6,6 +6,7 @@ from core.database import create
 from core.database import update
 
 from core import utils
+from core import estrutura
 
 from models.conta import Conta
 
@@ -21,7 +22,13 @@ class Professor(Conta):
         info = professor.verificarInfos()
         for c, v in enumerate(professor.__dict__.items()):
             setattr(professor, v[0], info[0][c])
-        return professor  
+        return professor
+    
+    def mostrar_menu(self):
+        opcoes = ["Ver Informações", "Alterar Informações", "Postar Notas", "Postar Faltas"]
+        while True:
+            a = estrutura.escolher_opcao(opcoes, "MENU DO PROFESSOR")  
+            break
     
     def postar_nota(self):
         id_aluno = input("Insira o ID do aluno: ")
@@ -52,4 +59,5 @@ class Professor(Conta):
             data_prova = input("Data Inválida. Insira a Data da prova [YYYY-MM-DD]\n")
         
         create.adicionar_nota(id_aluno, self.id_materia, nota, data_prova)
+        
         

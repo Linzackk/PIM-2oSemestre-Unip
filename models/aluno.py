@@ -2,6 +2,7 @@
 from core.database import read
 from core.database import create
 from core import utils
+from core import estrutura
 
 from models.conta import Conta
 
@@ -20,3 +21,10 @@ class Aluno(Conta):
         for c, v in enumerate(aluno.__dict__.items()):
             setattr(aluno, v[0], info[0][c])
         return aluno
+    
+    def mostrar_menu(self):
+        opcoes = ["Ver Informações", "Alterar Informações", "Ver Notas"]
+        while True:
+            a = estrutura.escolher_opcao(opcoes, "MENU DO ALUNO")
+            break
+        
