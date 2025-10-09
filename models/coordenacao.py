@@ -65,4 +65,8 @@ class Coordenador(Conta):
             if infos_corretas == "s":
                 break
             print("Reiniciando para inserção de dados.")
+            
+        # ! VINCULAR O PROFESSOR A MATERIA NA TABELA "materias"
         create.adicionar_professor(nome,idade,genero,telefone,cpf,data_nascimento,materia_ensino)
+        
+    # ? Criar funções para Atualização de Professores e Ou alunos (informações pessoais, turmas e materias)
