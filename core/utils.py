@@ -2,6 +2,7 @@
 import json
 from datetime import date, datetime
 from core.database import read
+from core import verificacao
 
 def importarSiglasIds():
     with open("ids-tabelas/idsBanco.json", "r") as arquivo:
@@ -27,3 +28,12 @@ def calcularIdade(nascimento):
 
 def pegarIdMateria(materia):
     return read.mostrar_informacao_filtrada("materias", "materia", materia, "materia_id")
+
+def pegar_data():
+    dia = input("Insira o Dia: ")
+    mes = input("Insira o Mes: ")
+    ano = input("Insira o Ano: ")
+    data = ""
+    if verificacao.verificarTipoEntrada("int", dia) and verificacao.verificarTipoEntrada("int", mes) and verificacao.verificarTipoEntrada("int", ano):
+        data = f"{ano}-{mes}-{dia}"
+    return data

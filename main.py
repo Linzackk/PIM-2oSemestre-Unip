@@ -19,8 +19,8 @@ while not id:
     if id_login == 0:
         break
     id = verificacao.existencia_conta(id_login)
-id_login = "YNB1JNC" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+id_login = "930XIGP" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
-    usuario.mostrar_menu()
+    usuario.postar_nota()
 #usuario.mostrar_info()

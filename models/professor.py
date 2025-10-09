@@ -33,31 +33,53 @@ class Professor(Conta):
     def postar_nota(self):
         id_aluno = input("Insira o ID do aluno: ")
         while True:
-            if verificacao.existencia_conta(id_aluno) and id_aluno[-1] == "A":
+            if verificacao.existencia_conta(id_aluno) and verificacao.verificarAluno(id_aluno): # Verifica Se a Conta existe e é de um aluno
                 break
-            
+            print("Id Inválido.")
             sair = verificacao.continuarEscolha()
-            if sair:
+            if sair: # Verifica se o usuario deseja sair
                 return
+            id_aluno = input("Insira o ID do aluno: ")
             
-            id_aluno = input("ID inválido. Insira o ID do aluno: ")
-        
         nota = input("Insira a Nota do Aluno: ")
         while True:
-            if verificacao.verificarTipoEntrada("float", nota):
+            if verificacao.verificarTipoEntrada("float", nota): # Verifica se a nota foi inserida corretamente (um numero float)
                 nota = float(nota)
-            
-            if verificacao.verificarNota(nota):
+            if verificacao.verificarNota(nota): # Verifica se a nota está no intervalo correto
                 break
-            
-            nota = input("Nota Inválida. Insira a Nota do Aluno: ")
-            
-        data_prova = input("Insira a Data da prova [YYYY-MM-DD]\n")   
+            nota = input("Nota Inválida. Insira a Nota do Aluno: ")    
+        data_prova = data_prova = utils.pegar_data()
         while True:
-            if verificacao.verificarData(data_prova):
+            if verificacao.verificarData(data_prova): # Verifica se a data da prova inserida é válida
                 break
-            data_prova = input("Data Inválida. Insira a Data da prova [YYYY-MM-DD]\n")
+            print("Data de Prova Inválida.")
+            data_prova = utils.pegar_data()
+        info = read.mostrar_tripla_condicao("notas", id_aluno, self.id_materia, data_prova, "id_aluno", "materia_id", "data_prova")
+        print(info)
+        print(f"{id_aluno} - {self.id_materia} - {data_prova}")
+        if info == []:
+            create.adicionar_nota(id_aluno, self.id_materia, nota, data_prova)
+        else:
+            update.atualizar_nota(id_aluno, self.id_materia, data_prova, nota)
+        print("Nota Postada com Sucesso.")
         
-        create.adicionar_nota(id_aluno, self.id_materia, nota, data_prova)
-        
-        
+    def subir_falta(self):
+        while True:
+            id_aluno = input("Insira ID do Aluno: ")
+            if id_aluno[-1] != "A":
+                print("Insira um ID de Aluno.")
+                continue
+            if not verificacao.existencia_conta(id_aluno):
+                print("Aluno Inexistente")
+                continue
+            faltas = 3 # Padrão de Faltas na UNIP (mudar com forme o uso)
+            infos = read.mostrar_dupla_condicao("faltas", id_aluno, self.id_materia, "id_aluno", "materia_id")
+            if infos == []:
+                create.adicionar_aluno_faltas(id_aluno, self.id_materia, faltas)
+            else:
+                update.atualizar_faltas(id_aluno, self.id_materia, infos[0][2] + 3)
+            print("Faltas Computadas com Sucesso.")
+       
+            continuar = input("Deseja Continuar? [s/n]").lower()
+            if continuar == "n":
+                break

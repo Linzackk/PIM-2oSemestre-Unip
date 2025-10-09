@@ -16,6 +16,14 @@ def mostrar_informacao(tabela, id):
         return False
     return mostrar_informacao_completa(tabela, id, id_tabela)
 
+def mostrar_dupla_condicao(tabela, id1, id2, chave1, chave2):
+    informacao = cursor.execute(f"SELECT * FROM {tabela} WHERE {chave1} = ? AND {chave2} = ?", (id1, id2)).fetchall()
+    return informacao
+
+def mostrar_tripla_condicao(tabela, id1, id2, id3, chave1, chave2, chave3):
+    informacao = cursor.execute(f"SELECT * FROM {tabela} WHERE {chave1} = ? AND {chave2} = ? AND {chave3} = ?", (id1, id2, id3)).fetchall()
+    return informacao
+
 def mostrar_informacao_completa(tabela: str, id: str, chave_principal: str):
     if tabela in "alunosprofessorescoordenacao":
         update.atualizar_idade(id)

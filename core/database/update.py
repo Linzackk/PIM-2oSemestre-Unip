@@ -20,12 +20,16 @@ def atualizar_idade(id_conta: str):
     nova_idade = utils.calcularIdade(read.mostrar_informacao_filtrada(tabela, chave_principal, id_conta, "data_nascimento"))
     atualizar_informacoes(id_conta, "idade", nova_idade)
     
-def atualizar_nota(id_conta: str, nota: float):
-    atualizar_informacoes(id_conta, )
+def atualizar_nota(id_conta: str, id_materia: str, data_prova: str, nota: float):
+    cursor.execute(f"UPDATE notas SET nota = ? WHERE materia_id = ? AND id_aluno = ? AND data_prova = ?", (nota, id_materia, id_conta, data_prova))
+    conexao.commit()
     
 def atualizar_materia():
     a = "a"
     
+def atualizar_faltas(id_aluno, materia_id, faltas):
+    cursor.execute(f"UPDATE faltas SET quantidade = ? WHERE materia_id = ? AND id_aluno = ?", (faltas, materia_id, id_aluno))
+    conexao.commit()
     
 # ? Fazer hoje: Atualizar_Notas, Atualizar_Professores, Atualizar_Materia
     

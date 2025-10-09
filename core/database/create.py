@@ -83,6 +83,14 @@ def adicionar_materia_faltas():
     
 def adicionar_nota(id_aluno, id_materia, nota, data_prova):
     cursor.execute("""
-                   INSERT INTO notas (materia_id, id_aluno, nota, data_avaliacao) VALUES (?,?,?,?)
-                   """, (id_aluno, id_materia, nota, data_prova)
+                   INSERT INTO notas (materia_id, id_aluno, nota, data_prova) VALUES (?,?,?,?)
+                   """, (id_materia, id_aluno, nota, data_prova)
                    )
+    conexao.commit()
+    
+def adicionar_aluno_faltas(id_aluno, id_materia, faltas):
+    cursor.execute("""
+                   INSERT INTO faltas (materia_id, id_aluno, quantidade) VALUES (?,?,?)
+                   """, (id_materia, id_aluno, faltas)
+                   )
+    conexao.commit()

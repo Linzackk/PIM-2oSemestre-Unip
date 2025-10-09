@@ -25,6 +25,9 @@ def existencia_conta(id: str):
     else:
         return True
     
+def faltas_cadastradas(id: str):
+    info = read.mostrar_informacao("faltas", id)
+    
 def identificarFuncao(id: str) -> str:
     siglas = utils.importarSiglaFuncao()
     try:
@@ -79,4 +82,7 @@ def verificarData(data: str):
         return True
     except ValueError:
         return False
-# Criar função para validar entrada de numeros (nos menus)
+
+def verificarAluno(id_aluno):
+    x = True if id_aluno[-1] == "A" else False
+    return x
