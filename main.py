@@ -19,11 +19,32 @@ while not id:
     if id_login == 0:
         break
     id = verificacao.existencia_conta(id_login)
-id_login = "2BCTQ1P" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+id_login = "YNB1JNC" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
-    usuario.mostrar_info()
-    
+    while True:
+        # Mostra o menu:
+        escolha = usuario.mostrar_menu()
+        if escolha == 0:
+            break
+        if escolha == 1:
+            usuario.mostrar_info()
+        if escolha == 2:
+            usuario.atualizar_informacao()
+        if id_login[-1] == "A":
+            if escolha == 3:
+                print("Mostrando notas...")
+        if id_login[-1] == "P":
+            if escolha == 3:
+                usuario.postar_nota()
+            if escolha == 4:
+                usuario.subir_falta()
+        if id_login[-1] == "C":
+            if escolha == 3:
+                usuario.adicionar_aluno()
+            if escolha == 4:
+                usuario.adicionar_professor()
 # Testar se o menu é melhor criar aqui no main com diversos if elses ou nas respectivas classes
 #usuario.mostrar_info()
 

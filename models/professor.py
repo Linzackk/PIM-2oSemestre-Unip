@@ -26,10 +26,9 @@ class Professor(Conta):
     
     def mostrar_menu(self):
         opcoes = ["Ver Informações", "Alterar Informações", "Postar Notas", "Postar Faltas"]
-        while True:
-            a = estrutura.escolher_opcao(opcoes, "MENU DO PROFESSOR")  
-            break
-    
+        a = estrutura.escolher_opcao(opcoes, "MENU DO PROFESSOR")  
+        return a        
+
     def postar_nota(self):
         id_aluno = input("Insira o ID do aluno: ")
         while True:

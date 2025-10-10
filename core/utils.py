@@ -53,4 +53,4 @@ def pegar_cpf():
         cpf = input("Insira seu CPF (apenas numeros): ")
         if cpf.isnumeric() and len(cpf) == 11:
             return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}"
-        print("Cpf inválido.")
+        print("Cpf inválido, por favor escreva novamente.")

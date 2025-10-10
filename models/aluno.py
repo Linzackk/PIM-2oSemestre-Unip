@@ -27,4 +27,4 @@ class Aluno(Conta):
         while True:
             a = estrutura.escolher_opcao(opcoes, "MENU DO ALUNO")
             break
-        
+        return a
