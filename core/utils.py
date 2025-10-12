@@ -20,6 +20,7 @@ def gerarTimestamp(dataDB: str = None):
     else:
         data = dataDB[0]
         data = datetime.strptime(data, "%Y-%m-%d")
+    print(data)
     valorTimeStamp = datetime(data.year, data.month, data.day)
     return int(valorTimeStamp.timestamp())
 

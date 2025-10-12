@@ -28,3 +28,10 @@ class Aluno(Conta):
             a = estrutura.escolher_opcao(opcoes, "MENU DO ALUNO")
             break
         return a
+    
+    def ver_notas(self):
+        notas = read.pegar_infos_nota(self.id)
+        print('-'*50)
+        for i in notas:
+            print(f"Professor: {i[2]}; Matéria: {i[1]}; Nota: {i[0]}")
+        print('-'*50)

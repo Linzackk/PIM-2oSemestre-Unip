@@ -54,12 +54,12 @@ class Professor(Conta):
             print("Data de Prova Inválida.")
             data_prova = utils.pegar_data()
         info = read.mostrar_tripla_condicao("notas", id_aluno, self.id_materia, data_prova, "id_aluno", "materia_id", "data_prova")
-        print(info)
-        print(f"{id_aluno} - {self.id_materia} - {data_prova}")
         if info == []:
             create.adicionar_nota(id_aluno, self.id_materia, nota, data_prova)
+            print("nota criada")
         else:
             update.atualizar_nota(id_aluno, self.id_materia, data_prova, nota)
+            print("nota atualizada")
         print("Nota Postada com Sucesso.")
         
     def subir_falta(self):

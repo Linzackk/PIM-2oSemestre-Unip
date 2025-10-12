@@ -32,3 +32,18 @@ def mostrar_informacao_completa(tabela: str, id: str, chave_principal: str):
 
 def mostrar_tabela_completa(tabela):
     return cursor.execute(f"SELECT * FROM {tabela}").fetchall()
+
+def pegar_infos_nota(id_aluno):
+    informacao = cursor.execute("""
+                                SELECT 
+                                    notas.nota,
+                                    materias.materia AS nome_materia,
+                                    professores.nome AS nome_professor
+                                FROM notas
+                                INNER JOIN materias 
+                                    ON CAST(notas.materia_id AS INTEGER) = materias.materia_id
+                                INNER JOIN professores 
+                                    ON materias.id_professor = professores.id_professor
+                                WHERE notas.id_aluno = ?;
+                                """, (id_aluno,)).fetchall()
+    return informacao

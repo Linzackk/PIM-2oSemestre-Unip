@@ -5,6 +5,7 @@ from core import verificacao
 from core import utils
 
 from core.database import read
+from core.database import update
 
 def adicionar_conta_login(id: str, senha: str):
     cursor.execute("INSERT INTO login VALUES (?, ?)", (id, senha))
@@ -29,7 +30,7 @@ def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: 
                 INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino, id_materia)
                 )
-                
+    update.atualizar_materia(id, id_materia)           
     adicionar_conta_login(id, senha)
     conexao.commit()
     print(f"Professor {nome} adicionado com sucesso com ID {id}")

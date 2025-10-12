@@ -9,7 +9,7 @@ from core import verificacao
 
 # Testes:
 # alunos = ["CW50T1A", "Z8O3J2A", "RCU91TA"]
-# professores = ["DTFG41P", "930XIGP", "Y2PR01P"]
+# professores = ["7UC3OGP", "LOGB50P", ]
 # coordenacao = ["YNB1JNC", "G5V0UXC", "5LQEPCC"]
 
 #Login
@@ -19,7 +19,7 @@ while not id:
     if id_login == 0:
         break
     id = verificacao.existencia_conta(id_login)
-id_login = "YNB1JNC" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+id_login = "CW50T1A" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 
 if id:
     usuario = criacaoClasses.criarUsuario(id_login)
@@ -34,7 +34,7 @@ if id:
             usuario.atualizar_informacao()
         if id_login[-1] == "A":
             if escolha == 3:
-                print("Mostrando notas...")
+                usuario.ver_notas()
         if id_login[-1] == "P":
             if escolha == 3:
                 usuario.postar_nota()

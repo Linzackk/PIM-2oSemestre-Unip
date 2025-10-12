@@ -72,7 +72,7 @@ def verificarTipoEntrada(tipo: str, entrada: str):
         else:
             float(entrada)
         return True
-    except KeyError:
+    except ValueError:
         return False
     
 def verificarData(data: str):

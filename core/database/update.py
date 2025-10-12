@@ -24,8 +24,9 @@ def atualizar_nota(id_conta: str, id_materia: str, data_prova: str, nota: float)
     cursor.execute(f"UPDATE notas SET nota = ? WHERE materia_id = ? AND id_aluno = ? AND data_prova = ?", (nota, id_materia, id_conta, data_prova))
     conexao.commit()
     
-def atualizar_materia():
-    a = "a"
+def atualizar_materia(id_professor, materia_id):
+    cursor.execute("UPDATE materias SET id_professor = ? WHERE materia_id = ?", (id_professor, materia_id))
+    conexao.commit()
     
 def atualizar_faltas(id_aluno, materia_id, faltas):
     cursor.execute(f"UPDATE faltas SET quantidade = ? WHERE materia_id = ? AND id_aluno = ?", (faltas, materia_id, id_aluno))
