@@ -3,6 +3,7 @@ from core import verificacao
 
 def escolher_opcao(lista: list, mensagem=""):
     lista.insert(0, "Sair")
+    print("-"*50)
     if mensagem != "":
         print(f"{mensagem}\n".upper().center(50))
     for c, i in enumerate(lista):

@@ -25,6 +25,13 @@ def existencia_conta(id: str):
     else:
         return True
     
+def validar_senha(senha: str, id: str):
+    senhaDB = read.mostrar_informacao_filtrada("login", "id", id, "senha")[0]
+    if senha == senhaDB:
+        return True
+    else:
+        return False
+    
 def faltas_cadastradas(id: str):
     info = read.mostrar_informacao("faltas", id)
     
