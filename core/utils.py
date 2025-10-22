@@ -54,3 +54,6 @@ def pegar_cpf():
         if cpf.isnumeric() and len(cpf) == 11:
             return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}"
         print("Cpf inválido, por favor escreva novamente.")
+        
+def formatar_data_br(data):
+    return f"{data[:4]}-{data[5:7]}-{data[8:]}"

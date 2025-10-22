@@ -6,7 +6,6 @@ from core.database import read
 from core.database import create
 from core import criacaoClasses
 from core import verificacao
-
 # Testes:
 # ? alunos = ["CW50T1A", "Z8O3J2A", "RCU91TA", "3TDZG5A"]
 # ? professores = ["7UC3OGP", "LOGB50P", ]
@@ -46,6 +45,8 @@ while True:
         if id_login[-1] == "A":
             if escolha == 3:
                 usuario.ver_notas()
+            if escolha == 4:
+                usuario.ver_faltas()
         if id_login[-1] == "P":
             if escolha == 3:
                 usuario.postar_nota()

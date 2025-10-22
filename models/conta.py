@@ -26,7 +26,8 @@ class Conta:
         print("-"*30)
         for c, v in self.__dict__.items():
            print(f"{c.upper()}: {v}")
-           
+        input(" Aperte ENTER para continuar...")
+        
     def exportar_info(self):
         return self.__dict__.items()
     

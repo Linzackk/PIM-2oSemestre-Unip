@@ -38,7 +38,8 @@ def pegar_infos_nota(id_aluno):
                                 SELECT 
                                     notas.nota,
                                     materias.materia AS nome_materia,
-                                    professores.nome AS nome_professor
+                                    professores.nome AS nome_professor,
+                                    notas.data_prova as data
                                 FROM notas
                                 INNER JOIN materias 
                                     ON CAST(notas.materia_id AS INTEGER) = materias.materia_id
@@ -47,3 +48,14 @@ def pegar_infos_nota(id_aluno):
                                 WHERE notas.id_aluno = ?;
                                 """, (id_aluno,)).fetchall()
     return informacao
+
+def ver_faltas(id_aluno):
+    info = cursor.execute("""
+                          SELECT faltas.quantidade, 
+                          materias.materia as nome_materioa
+                          FROM faltas
+                          INNER JOIN materias
+                            ON CAST(faltas.materia_id AS INTEGER) = materias.materia_id
+                          WHERE id_aluno = ?;
+                          """, (id_aluno, )).fetchall()
+    return info

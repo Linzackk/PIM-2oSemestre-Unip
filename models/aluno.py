@@ -23,7 +23,7 @@ class Aluno(Conta):
         return aluno
     
     def mostrar_menu(self):
-        opcoes = ["Ver Informações", "Alterar Informações", "Ver Notas"]
+        opcoes = ["Ver Informações", "Alterar Informações", "Ver Notas", "Ver Faltas"]
         while True:
             a = estrutura.escolher_opcao(opcoes, "MENU DO ALUNO")
             break
@@ -32,6 +32,16 @@ class Aluno(Conta):
     def ver_notas(self):
         notas = read.pegar_infos_nota(self.id)
         print('-'*50)
+        print("{:<30} {:<20} {:>5} {:>15}\n".format("Professor", "Matéria", "Nota", "Data"))
         for i in notas:
-            print(f"Professor: {i[2]}; Matéria: {i[1]}; Nota: {i[0]}")
+            print(f"{i[2]:<30} {i[1]:<20} {i[0]:>5} {utils.formatar_data_br(i[3]):>15}")
         print('-'*50)
+        input(" Aperte ENTER para continuar...")
+    
+    def ver_faltas(self):
+        faltas = read.ver_faltas(self.id)
+        print('-'*50)
+        for i in faltas:
+            print(f"{i[1]} - {i[0]} Faltas")
+        print('-'*50)
+        input(" Aperte ENTER para continuar...")
