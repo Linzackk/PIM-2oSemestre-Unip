@@ -41,7 +41,8 @@ class Aluno(Conta):
     def ver_faltas(self):
         faltas = read.ver_faltas(self.id)
         print('-'*50)
+        print("{:<20} {:>5}".format("Matéria", "Faltas"))
         for i in faltas:
-            print(f"{i[1]} - {i[0]} Faltas")
+            print(f"{i[1]:<20} {i[0]:>5}x")
         print('-'*50)
         input(" Aperte ENTER para continuar...")
