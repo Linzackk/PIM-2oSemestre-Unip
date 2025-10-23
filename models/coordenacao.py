@@ -159,8 +159,15 @@ class Coordenador(Conta):
         
     def ver_materias(self):
         # Ve as materias presentes no sistema
+        # [(1, 'Matemática Básica', '60', 'Joao Carlos'), (5, 'Álgebra Avançada', '80', 'Ana Carolina Oliveira Teles'), (6, 'Português I', '60', 'Pedro Henrique')]
         materias = read.ver_materias()
-        print(materias)
+        print("-"*110)
+        print("{:<5}{:<50}{:<50}{:<5}".format("ID", "Matéria", "Professor", "Horas"))
+        print(" -"*55)
+        for i in materias:
+            print("{:<5}{:<50}{:<50}{:>5}".format(i[0], i[1], i[3], i[2]))
+        print("-"*110)
+        input("    Aperte ENTER para continuar...")
         
     def atualizar_materia(self):
         # Atualiza o nome da matéria e/ou professor 

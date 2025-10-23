@@ -64,8 +64,8 @@ def ver_materias():
     info = cursor.execute("""
                             SELECT materias.materia_id,
                                 materias.materia as nome_materia,
-                                materias.id_professor,
-                                materias.carga_horaria
+                                materias.carga_horaria,
+                                professores.nome
                             FROM materias
                             INNER JOIN professores
                                 ON CAST(professores.id_professor AS TEXT) = materias.id_professor
