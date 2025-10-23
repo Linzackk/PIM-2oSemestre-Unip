@@ -7,7 +7,7 @@ from core.database import create
 from core import criacaoClasses
 from core import verificacao
 # Testes:
-# ? alunos = ["CW50T1A", "Z8O3J2A", "RCU91TA", "3TDZG5A"]
+# ? alunos = ["CW50T1A", "Z8O3J2A", "RCU91TA", "3TDZG5A"] RTRFS3A
 # ? professores = ["7UC3OGP", "LOGB50P", ]
 # ? coordenacao = ["YNB1JNC", "G5V0UXC", "5LQEPCC"]
 

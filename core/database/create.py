@@ -25,7 +25,12 @@ def adicionar_aluno(nome: str, idade: int, genero: str, telefone: str, cpf: str,
     
 def adicionar_professor(nome: str, idade: int, genero: str, telefone: str, cpf: str, data_nascimento: str, materia_ensino: str, senha: str = "123"):
     id = verificacao.criar_id("professor")
-    id_materia = utils.pegarIdMateria(materia_ensino)[0]
+    try:
+        id_materia = utils.pegarIdMateria(materia_ensino)[0]
+    except TypeError:
+        print("Matéria Inexistente.")
+        return
+    
     cursor.execute("""
                 INSERT INTO professores VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (id, nome, idade, genero, telefone, cpf, data_nascimento, materia_ensino, id_materia)

@@ -26,7 +26,10 @@ def existencia_conta(id: str):
         return True
     
 def validar_senha(senha: str, id: str):
-    senhaDB = read.mostrar_informacao_filtrada("login", "id", id, "senha")[0]
+    try:
+        senhaDB = read.mostrar_informacao_filtrada("login", "id", id, "senha")[0]
+    except TypeError:
+        return False
     if senha == senhaDB:
         return True
     else:
