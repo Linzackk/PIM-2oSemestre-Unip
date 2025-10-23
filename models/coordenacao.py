@@ -42,11 +42,42 @@ class Coordenador(Conta):
             case 2:
                 self.atualizar_informacao()
             case 3:
-                escolha2 = self.mostrar_menu("Alunos")
+                while True:
+                    escolha2 = self.mostrar_menu("Alunos")
+                    match escolha2:
+                        case 0:
+                            break
+                        case 1:
+                            self.adicionar_aluno()
+                        case 2:
+                            self.atualizar_aluno()
+                        case 3:
+                            self.deletar_aluno()
+                
             case 4:
-                escolha2 = self.mostrar_menu("Professores")
+                while True:
+                    escolha2 = self.mostrar_menu("Professores")
+                    match escolha2:
+                        case 0:
+                            break
+                        case 1:
+                            self.adicionar_professor()
+                        case 2:
+                            self.atualizar_professor()
+                        case 3:
+                            self.deletar_professor()
             case 5:
-                escolha2 = self.mostrar_menu("Matérias")
+                while True:
+                    escolha2 = self.mostrar_menu("Matérias")
+                    match escolha2:
+                        case 0:
+                            break
+                        case 1:
+                            self.adicionar_materia()
+                        case 2:
+                            self.atualizar_materia()
+                        case 3:
+                            self.deletar_materia()
             case 6:
                 self.mostrar_contas()
         
@@ -91,5 +122,37 @@ class Coordenador(Conta):
     
     def mostrar_contas(self):
         print("     Mostrando contas...")
+        
+    def atualizar_aluno(self):
+        # Atualizar as informações padrão do aluno
+        pass
+    
+    def atualizar_professor(self):
+        # Atualizar as informações padrão do aluno
+        pass
+    
+    def deletar_conta(self):
+        # Deletar uma conta com base no ID das tabelas que a conta faz parte
+        pass
+    
+    def deletar_professor(self):
+        # Passar o deletar_conta() para reomver do Login, Professores e Matéria.
+        pass
+    
+    def deletar_aluno(self):
+        # Passar o deletar_conta() para remover do Login, Alunos, Matérias e Faltas
+        pass
+    
+    def criar_materia(self):
+        # Cria uma matéria no sistema
+        pass
+    
+    def atualizar_materia(self):
+        # Atualiza o nome da matéria e/ou professor 
+        pass
+    
+    def deletar_materia(self):
+        # Deleta uma matéria (provavelmente não necessário.)
+        pass
         
     # ? Criar funções para Atualização de Professores e Ou alunos (informações pessoais, turmas e materias)
