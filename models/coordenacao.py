@@ -20,11 +20,35 @@ class Coordenador(Conta):
             setattr(coordenador, v[0], info[0][c])
         return coordenador  
     
-    def mostrar_menu(self):
-        opcoes = ["Ver Informações", "Alterar Informações", "Adicionar Alunos", "Adicionar Professores"]
+    def mostrar_menu(self, complemento=""):
+        if complemento == "":
+            opcoes = ["Ver Informações", "Alterar Informações", "Alunos", "Profesores", "Matérias"]
+        elif complemento == "Alunos":
+            opcoes = ["Adicionar Aluno", "Atualizar Aluno", "Deletar Aluno"]
+        elif complemento == "Professores":
+            opcoes = ["Adicionar Professor", "Atualizar Professor", "Deletar Professor"]
+        elif complemento == "Matérias":
+            opcoes = ["Adicionar Materia", "Ver Materias", "Atualizar Materia", "Deletar Materia"]
         a = estrutura.escolher_opcao(opcoes, "MENU DA COORDENACAO")
-        print(a)
         return a
+    
+    def escolher_opcao(self):
+        escolha = self.mostrar_menu()
+        match escolha:
+            case 0:
+                return
+            case 1:
+                self.mostrar_info()
+            case 2:
+                self.atualizar_informacao()
+            case 3:
+                escolha2 = self.mostrar_menu("Alunos")
+            case 4:
+                escolha2 = self.mostrar_menu("Professores")
+            case 5:
+                escolha2 = self.mostrar_menu("Matérias")
+            case 6:
+                self.mostrar_contas()
         
     def adicionar_aluno(self):
         # Pegar informações dos alunos: NOME COMPLETO, IDADE, GENERO, TELEFONE, CPF, DATA_NASCIMENTO, CAMPUS, CURSO, TURMA, HORARIO_AULA
@@ -64,5 +88,8 @@ class Coordenador(Conta):
             
         # ! VINCULAR O PROFESSOR A MATERIA NA TABELA "materias"
         create.adicionar_professor(nome,idade,genero,telefone,cpf,data_nascimento,materia_ensino)
+    
+    def mostrar_contas(self):
+        print("     Mostrando contas...")
         
     # ? Criar funções para Atualização de Professores e Ou alunos (informações pessoais, turmas e materias)

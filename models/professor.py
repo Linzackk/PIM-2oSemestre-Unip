@@ -28,6 +28,20 @@ class Professor(Conta):
         opcoes = ["Ver Informações", "Alterar Informações", "Postar Notas", "Postar Faltas"]
         a = estrutura.escolher_opcao(opcoes, "MENU DO PROFESSOR")  
         return a        
+    
+    def escolher_opcao(self):
+        escolha = self.mostrar_menu()
+        match escolha:
+            case 0:
+                return
+            case 1:
+                self.mostrar_info()
+            case 2:
+                self.atualizar_informacao()
+            case 3:
+                self.postar_nota()
+            case 4:
+                self.subir_falta()
 
     def postar_nota(self):
         id_aluno = input("Insira o ID do aluno: ")

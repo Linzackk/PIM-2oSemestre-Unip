@@ -29,6 +29,20 @@ class Aluno(Conta):
             break
         return a
     
+    def escolher_opcao(self):
+        escolha = self.mostrar_menu()
+        match escolha:
+            case 0:
+                return
+            case 1:
+                self.mostrar_info()
+            case 2:
+                self.atualizar_informacao()
+            case 3:
+                self.ver_notas()
+            case 4:
+                self.ver_faltas()
+    
     def ver_notas(self):
         notas = read.pegar_infos_nota(self.id)
         print('-'*50)
