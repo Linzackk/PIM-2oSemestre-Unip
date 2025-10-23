@@ -101,7 +101,7 @@ class Coordenador(Conta):
             data_nascimento = utils.pegar_data()
             campus = input("Insira o Campus: ")
             curso = input("Insira o Curso: ")
-            turma = None
+            turma = input("Insira a Turma do Aluno: ")
             horario_aula = input("Horário Matutino, Vespertino ou Noturno: ")
             print("-"*50)
             print(f"Nome: {nome}\n Idade: {idade}\nGenero: {genero}\nTelefone: {telefone}\nCpf: {cpf}\nData de Nascimento: {data_nascimento}\nCampus: {campus}\nCurso: {curso}\nHorario de Aula: {horario_aula}")
@@ -155,8 +155,14 @@ class Coordenador(Conta):
         
     def ver_alunos(self):
         # ('CW50T1A', 'Isaac de Medeiros', 20, 'Masculino', '(11) 91234-5678', '123.456.789-00', '2005-03-15', 'Campus Centro', 'Análise e Desenvolvimento de Sistemas', 'Turma A', 'Matutino')
-        alunos = read.mostrar_tabela_completa("alunos")
-        print(alunos)
+        alunos = read.ver_alunos()
+        print("-"*246)
+        print("{:<9}{:<50}{:<7}{:<11}{:<16}{:<16}{:<17}{:<50}{:<50}{:<10}{:<10}".format("ID", "Nome", "Idade", "Gênero", "Telefone", "CPF", "Data Nascimento", "Campus", "Curso", "Turma", "Periodo"))
+        print("- "*123)
+        for i in alunos:
+            print("{:<9}{:<50}{:<7}{:<11}{:<16}{:<16}{:<17}{:<50}{:<50}{:<10}{:<10}".format(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10]))
+        print("-"*246)
+        input("    Aperte ENTER para continuar...")
     
     def deletar_professor(self):
         # Passar o deletar_conta() para reomver do Login, Professores e Matéria.
@@ -179,13 +185,14 @@ class Coordenador(Conta):
         
     def ver_materias(self):
         # Ve as materias presentes no sistema
-        # [(1, 'Matemática Básica', '60', 'Joao Carlos'), (5, 'Álgebra Avançada', '80', 'Ana Carolina Oliveira Teles'), (6, 'Português I', '60', 'Pedro Henrique')]
         materias = read.ver_materias()
+        print(materias)
         print("-"*110)
         print("{:<5}{:<50}{:<50}{:<5}".format("ID", "Matéria", "Professor", "Horas"))
         print(" -"*55)
         for i in materias:
-            print("{:<5}{:<50}{:<50}{:>5}".format(i[0], i[1], i[3], i[2]))
+            professor = i[3] if not i[3] == None else "None"
+            print("{:<5}{:<50}{:<50}{:>5}".format(i[0], i[1], professor, i[2]))
         print("-"*110)
         input("    Aperte ENTER para continuar...")
         

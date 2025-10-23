@@ -67,7 +67,11 @@ def ver_materias():
                                 materias.carga_horaria,
                                 professores.nome
                             FROM materias
-                            INNER JOIN professores
+                            LEFT JOIN professores
                                 ON CAST(professores.id_professor AS TEXT) = materias.id_professor
                           """).fetchall()
+    return info
+
+def ver_alunos():
+    info = cursor.execute("SELECT * FROM alunos WHERE turma != 'None'")
     return info

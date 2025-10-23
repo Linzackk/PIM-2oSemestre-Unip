@@ -29,6 +29,7 @@ def validar_senha(senha: str, id: str):
     try:
         senhaDB = read.mostrar_informacao_filtrada("login", "id", id, "senha")[0]
     except TypeError:
+        print("Informações Inválidas.")
         return False
     if senha == senhaDB:
         return True

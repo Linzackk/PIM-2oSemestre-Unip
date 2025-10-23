@@ -33,7 +33,7 @@ class Professor(Conta):
         escolha = self.mostrar_menu()
         match escolha:
             case 0:
-                return
+                return escolha
             case 1:
                 self.mostrar_info()
             case 2:
