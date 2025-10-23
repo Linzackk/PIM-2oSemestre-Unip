@@ -3,6 +3,7 @@ from core.database import read
 from core.database import create
 from core import utils
 from core import estrutura
+from core import verificacao
 
 from models.conta import Conta
 
@@ -36,7 +37,7 @@ class Coordenador(Conta):
         escolha = self.mostrar_menu()
         match escolha:
             case 0:
-                return
+                return escolha
             case 1:
                 self.mostrar_info()
             case 2:
@@ -75,8 +76,10 @@ class Coordenador(Conta):
                         case 1:
                             self.adicionar_materia()
                         case 2:
-                            self.atualizar_materia()
+                            self.ver_materias()
                         case 3:
+                            self.atualizar_materia()
+                        case 4:
                             self.deletar_materia()
             case 6:
                 self.mostrar_contas()
@@ -143,10 +146,22 @@ class Coordenador(Conta):
         # Passar o deletar_conta() para remover do Login, Alunos, Matérias e Faltas
         pass
     
-    def criar_materia(self):
+    def adicionar_materia(self):
         # Cria uma matéria no sistema
-        pass
-    
+        while True:
+            nome_materia = input("Insira o nome da Matéria: ")
+            carga_horaria = utils.pegar_carga_horaria()
+            print(f"As informações\nMatéria: {nome_materia}\nCarga Horária: {carga_horaria} horas")
+            valido = input("Estão Corretas? [s/n] ").lower()
+            if valido == "s":
+                break
+        create.adicionar_materia(nome_materia, carga_horaria)
+        
+    def ver_materias(self):
+        # Ve as materias presentes no sistema
+        materias = read.ver_materias()
+        print(materias)
+        
     def atualizar_materia(self):
         # Atualiza o nome da matéria e/ou professor 
         pass

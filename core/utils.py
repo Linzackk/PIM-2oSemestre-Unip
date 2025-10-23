@@ -57,3 +57,13 @@ def pegar_cpf():
         
 def formatar_data_br(data):
     return f"{data[:4]}-{data[5:7]}-{data[8:]}"
+
+def pegar_carga_horaria():
+    valido = False
+    while not valido:
+        carga_horaria = input("Insira a carga horaria em horas (apenas números inteiros.): ")
+        if not verificacao.verificarTipoEntrada("int", carga_horaria):
+            print("Dados inseridos inválidos.")
+        else:
+            break
+    return int(carga_horaria)

@@ -15,7 +15,7 @@ from core import verificacao
 
 while True:
     #Login
-    id = False # ! Mudar para falso para entrar na área de login
+    id = True # ! Mudar para falso para entrar na área de login
     while not id:
         print("-"*50)
         id_login = input("Insira seu ID para Login [0 - Sair]\n")
@@ -28,11 +28,13 @@ while True:
             print("Informações Incorretas. Por favor insira novamente.")
             id = False
         
-    #id_login = "YNB1JNC" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
+    id_login = "YNB1JNC" # ! APENAS PARA TESTES EVITANDO AREA DE LOGIN
 
     if not id:
         break
     usuario = criacaoClasses.criarUsuario(id_login)
     while True:
-        if usuario.escolher_opcao() == None:
+        escolha = usuario.escolher_opcao()
+        if escolha == 0:
             break
+            

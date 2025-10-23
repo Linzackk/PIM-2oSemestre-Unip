@@ -69,10 +69,10 @@ def adicionar_curso(curso: str, duracao_anos: int, formacao: str):
     conexao.commit()
     print(f"Curso {curso} adicionado com sucesso.")
     
-def adicionar_materia(materia: str, professor_id: str, carga_horaria: int):
+def adicionar_materia(materia: str, carga_horaria: int):
     cursor.execute("""
                 INSERT INTO materias (materia, id_professor, carga_horaria) VALUES ( ?, ?, ?)
-                """, (materia, professor_id, carga_horaria)
+                """, (materia, None, carga_horaria)
                 )
                 
     conexao.commit()
