@@ -23,11 +23,11 @@ class Coordenador(Conta):
     
     def mostrar_menu(self, complemento=""):
         if complemento == "":
-            opcoes = ["Ver Informações", "Alterar Informações", "Alunos", "Profesores", "Matérias"]
+            opcoes = ["Ver Informações", "Alterar Informações", "Alunos", "Professores", "Matérias"]
         elif complemento == "Alunos":
-            opcoes = ["Adicionar Aluno", "Atualizar Aluno", "Deletar Aluno"]
+            opcoes = ["Adicionar Aluno", "Ver Alunos", "Atualizar Aluno", "Deletar Aluno"]
         elif complemento == "Professores":
-            opcoes = ["Adicionar Professor", "Atualizar Professor", "Deletar Professor"]
+            opcoes = ["Adicionar Professor", "Ver Professores", "Atualizar Professor", "Deletar Professor"]
         elif complemento == "Matérias":
             opcoes = ["Adicionar Materia", "Ver Materias", "Atualizar Materia", "Deletar Materia"]
         a = estrutura.escolher_opcao(opcoes, "MENU DA COORDENACAO")
@@ -51,8 +51,10 @@ class Coordenador(Conta):
                         case 1:
                             self.adicionar_aluno()
                         case 2:
-                            self.atualizar_aluno()
+                            self.ver_alunos()
                         case 3:
+                            self.atualizar_aluno()
+                        case 4:
                             self.deletar_aluno()
                 
             case 4:
@@ -64,8 +66,10 @@ class Coordenador(Conta):
                         case 1:
                             self.adicionar_professor()
                         case 2:
-                            self.atualizar_professor()
+                            self.ver_professores()
                         case 3:
+                            self.atualizar_professor()
+                        case 4:
                             self.deletar_professor()
             case 5:
                 while True:
@@ -137,6 +141,22 @@ class Coordenador(Conta):
     def deletar_conta(self):
         # Deletar uma conta com base no ID das tabelas que a conta faz parte
         pass
+    
+    def ver_professores(self):
+        # ('7UC3OGP', 'Joao Carlos', 39, 'Masculino', '(11) 912345678', '123.456.789-10', '1986-04-18', 'Matemática Básica', 1)
+        professores = read.mostrar_tabela_completa("professores")
+        print("-"*176)
+        print("{:<9}{:<50}{:<7}{:<11}{:<16}{:<16}{:<17}{:<50}".format("ID", "Nome", "Idade", "Gênero", "Telefone", "CPF", "Data Nascimento", "Matéria de Ensino"))
+        print("- "*88)
+        for i in professores:
+            print("{:<9}{:<50}{:<7}{:<11}{:<16}{:<16}{:<17}{:<50}".format(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7]))
+        print("-"*176)
+        input("    Aperte ENTER para continuar...")
+        
+    def ver_alunos(self):
+        # ('CW50T1A', 'Isaac de Medeiros', 20, 'Masculino', '(11) 91234-5678', '123.456.789-00', '2005-03-15', 'Campus Centro', 'Análise e Desenvolvimento de Sistemas', 'Turma A', 'Matutino')
+        alunos = read.mostrar_tabela_completa("alunos")
+        print(alunos)
     
     def deletar_professor(self):
         # Passar o deletar_conta() para reomver do Login, Professores e Matéria.
