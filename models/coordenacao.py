@@ -25,9 +25,9 @@ class Coordenador(Conta):
         if complemento == "":
             opcoes = ["Ver Informações", "Alterar Informações", "Alunos", "Professores", "Matérias"]
         elif complemento == "Alunos":
-            opcoes = ["Adicionar Aluno", "Ver Alunos", "Atualizar Aluno", "Deletar Aluno"]
+            opcoes = ["Adicionar Aluno", "Ver Alunos", "Atualizar Aluno"]
         elif complemento == "Professores":
-            opcoes = ["Adicionar Professor", "Ver Professores", "Atualizar Professor", "Deletar Professor"]
+            opcoes = ["Adicionar Professor", "Ver Professores", "Atualizar Professor"]
         elif complemento == "Matérias":
             opcoes = ["Adicionar Materia", "Ver Materias", "Atualizar Materia", "Deletar Materia"]
         a = estrutura.escolher_opcao(opcoes, "MENU DA COORDENACAO")
@@ -186,7 +186,6 @@ class Coordenador(Conta):
     def ver_materias(self):
         # Ve as materias presentes no sistema
         materias = read.ver_materias()
-        print(materias)
         print("-"*110)
         print("{:<5}{:<50}{:<50}{:<5}".format("ID", "Matéria", "Professor", "Horas"))
         print(" -"*55)

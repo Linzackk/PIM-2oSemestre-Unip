@@ -45,18 +45,18 @@ class Aluno(Conta):
     
     def ver_notas(self):
         notas = read.pegar_infos_nota(self.id)
-        print('-'*50)
-        print("{:<30} {:<20} {:>5} {:>15}\n".format("Professor", "Matéria", "Nota", "Data"))
+        print('-'*103)
+        print("{:<30} {:<50} {:>5} {:>15}\n".format("Professor", "Matéria", "Nota", "Data"))
         for i in notas:
-            print(f"{i[2]:<30} {i[1]:<20} {i[0]:>5} {utils.formatar_data_br(i[3]):>15}")
-        print('-'*50)
+            print(f"{i[2]:<30} {i[1]:<50} {i[0]:>5} {utils.formatar_data_br(i[3]):>15}")
+        print('-'*103)
         input(" Aperte ENTER para continuar...")
     
     def ver_faltas(self):
         faltas = read.ver_faltas(self.id)
-        print('-'*50)
+        print('-'*103)
         print("{:<20} {:>5}".format("Matéria", "Faltas"))
         for i in faltas:
             print(f"{i[1]:<20} {i[0]:>5}x")
-        print('-'*50)
+        print('-'*103)
         input(" Aperte ENTER para continuar...")
